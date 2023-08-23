@@ -12,20 +12,12 @@ public class Session implements Runnable {
     public void run() {
         try {
             while (true) {
-                byte[] bf = new byte[300];
+                byte[] bf = new byte[30000];
                 socket.getInputStream().read(bf);
-                String rec = new String(bf, "UTF-8").trim();
-                ServerSupremo.sendBroadcast(rec);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }
-
-    public void send(String message){
-        try {
-            socket.getOutputStream().write(message.getBytes());
-        }catch (IOException ex){ex.printStackTrace();}
     }
 
 }
